@@ -3,6 +3,7 @@ Docker-Compose: Docker + Apache 2.4 + PHP 5.5.9 + Laravel 5.2 + MariaDB + PhpMyA
 
 ### Browser
 http://localhost - php app
+
 http://localhost:9901 - pma 
 
 ### Docker
