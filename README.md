@@ -1,5 +1,5 @@
 # docker-php
-Docker-Compose: Docker + Apache 2.4 + PHP 5.5.9 + Laravel 5.2 + MariaDB + PhpMyAdmin + Composer
+**Docker-Compose: Docker + Apache 2.4 + PHP 5.5.9 + Laravel 5.2 + MariaDB + PhpMyAdmin + Composer**
 
 ### Browser
 http://localhost - php app
