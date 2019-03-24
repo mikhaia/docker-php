@@ -27,3 +27,10 @@ List of containers:
 If you need to change version of laravel, or make your build go into docker web_php and run this command from **var** folder
 
 `/var# php composer.phar create-project --prefer-dist laravel/laravel www "5.2.*"`
+
+### Notes:
+The folders *storage* and *bootstrap* should have rules for write:
+`sudo chmod 777 -R storage && sudo chmod 777 -R bootstrap`
+
+Generate a new key for laravel, run from php-container:
+`php artisan key:generate`
