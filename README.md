@@ -29,11 +29,8 @@ If you need to change version of laravel, or make your build go into docker web_
 `/var# php composer.phar create-project --prefer-dist laravel/laravel www "5.2.*"`
 
 ### Notes:
-The folders *storage* and *bootstrap* should have rules for write:
++ The folders *storage* and *bootstrap* should have rules for write:
+  - `sudo chmod 777 -R storage && sudo chmod 777 -R bootstrap`
 
-`sudo chmod 777 -R storage && sudo chmod 777 -R bootstrap`
-
-
-Generate a new key for laravel, run from php-container:
-
-`php artisan key:generate`
++ Generate a new key for laravel, run from php-container:
+  - `php artisan key:generate`
