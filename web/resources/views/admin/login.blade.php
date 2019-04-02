@@ -13,17 +13,17 @@
         <meta property="og:type" content="website">
         <meta property="og:url" content="">
         <meta property="og:image" content="">
-        <link rel="shortcut icon" href="{{ asset('/admin/assets/media/favicons/favicon.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('/admin/assets/media/favicons/favicon-192x192.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/admin/assets/media/favicons/apple-touch-icon-180x180.png') }}">
+        <link rel="shortcut icon" href="{{ asset('/admin_assets/assets/media/favicons/favicon.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('/admin_assets/assets/media/favicons/favicon-192x192.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/admin_assets/assets/media/favicons/apple-touch-icon-180x180.png') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
-    <link rel="stylesheet" id="css-main" href="{{ asset('/admin/assets/css/oneui.min-4.1.css') }}">
+    <link rel="stylesheet" id="css-main" href="{{ asset('/admin_assets/assets/css/oneui.min-4.1.css') }}">
         <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-16158021-6', 'auto');ga('send', 'pageview');</script>
 </head>
 <body>
 <div id="page-container">
                 <main id="main-container">
-<div class="bg-image" style="background-image: url('{{ asset('/admin/assets/media/photos/photo34@2x.jpg') }}');">
+<div class="bg-image" style="background-image: url('{{ asset('/admin_assets/assets/media/photos/photo34@2x.jpg') }}');">
     <div class="hero-static bg-black-50">
         <div class="content">
             <div class="row justify-content-center">
@@ -39,11 +39,11 @@
                         </div>
                         <div class="block-content">
                             <div class="p-sm-3 px-lg-4 py-lg-5 text-center">
-                                <img class="img-avatar img-avatar96" src="{{ asset('/admin/img/user.png') }}" alt="">
+                                <img class="img-avatar img-avatar96" src="{{ asset('/admin_assets/img/user.png') }}" alt="">
                                 <p class="font-w600 my-2">
                                     Laravel CMS
                                 </p>
-                                {{ Form::open(['url' => 'foo/bar', 'class' => 'js-validation-lock']) }}
+                                {{ Form::open(['url' => 'admin/login', 'class' => 'js-validation-lock']) }}
                                     <div class="form-group py-3">
                                         {{ Form::text('email', null, ['class' => 'form-control form-control-lg form-control-alt', 'placeholder' => 'E-mail..']) }}
                                     </div>
@@ -71,9 +71,9 @@
 </div>
     </main>
     </div>
-<script src="{{ asset('/admin/assets/js/oneui.core.min-4.1.js') }}"></script>
-<script src="{{ asset('/admin/assets/js/oneui.app.js') }}"></script>
-<script src="{{ asset('/admin/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('/admin/assets/js/pages/op_auth_lock.min.js') }}"></script>
+<script src="{{ asset('/admin_assets/assets/js/oneui.core.min-4.1.js') }}"></script>
+<script src="{{ asset('/admin_assets/assets/js/oneui.app.js') }}"></script>
+<script src="{{ asset('/admin_assets/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('/admin_assets/assets/js/pages/op_auth_lock.min.js') }}"></script>
     </body>
 </html>

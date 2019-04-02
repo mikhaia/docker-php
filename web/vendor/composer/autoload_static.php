@@ -278,6 +278,7 @@ class ComposerStaticInitc92aa84917ad4ff98a151f1f5b04629d
     );
 
     public static $classMap = array (
+        'BlocksTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BlocksTableSeeder.php',
         'CreateBlocksTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_25_082128_create_blocks_table.php',
         'CreatePagesBlocksTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_25_082227_create_pages_blocks_table.php',
         'CreatePagesTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_25_082203_create_pages_table.php',
@@ -761,6 +762,7 @@ class ComposerStaticInitc92aa84917ad4ff98a151f1f5b04629d
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PagesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PagesTableSeeder.php',
         'SebastianBergmann\\Comparator\\ArrayComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ArrayComparator.php',
         'SebastianBergmann\\Comparator\\Comparator' => __DIR__ . '/..' . '/sebastian/comparator/src/Comparator.php',
         'SebastianBergmann\\Comparator\\ComparisonFailure' => __DIR__ . '/..' . '/sebastian/comparator/src/ComparisonFailure.php',

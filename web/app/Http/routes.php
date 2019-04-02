@@ -12,11 +12,17 @@
 */
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
+    Route::get('index', 'Index@index');
+    Route::resource('pages', 'Pages');
+    Route::resource('users', 'Users');
+    Route::resource('blocks', 'Blocks');
+
     Route::get('login', 'Login@index');
-    // Route::get('login', function(){
-    //     return view('admin/login');
-    // });
+    Route::post('login', 'Login@login');
+    Route::get('', 'Login@check');
 });
+
+
 
 Route::get('/', function () {
     return view('welcome');
