@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
+use Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -47,8 +49,8 @@ class Login extends \App\Http\Controllers\Controller
         }
         */
 
-        $data = \Input::only('email', 'password');
-        \Auth::attempt($data, true)
+        $data = Input::only('email', 'password');
+        Auth::attempt($data, true);
         return redirect('admin');
     }
 
