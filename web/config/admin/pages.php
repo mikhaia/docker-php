@@ -10,9 +10,9 @@ return [
     ],
 
     'form' => [
-        'id' => ['type' => 'id'],
         'title' => ['type' => 'text'],
         'url' => ['type' => 'text'],
-        'public' => ['type' => 'checkbox']
+        'public' => ['type' => 'checkbox'],
+        'actions' => ['type' => 'actions', 'btns' => ['save', 'back']]
     ]
 ];

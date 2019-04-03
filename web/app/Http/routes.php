@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
     Route::get('login', 'Login@index');
     Route::post('login', 'Login@login');
+    Route::get('logout', 'Login@logout');
     Route::get('', 'Login@check');
 });
 

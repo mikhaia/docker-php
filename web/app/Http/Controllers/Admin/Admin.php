@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DB;
 use Config;
+use Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -45,6 +46,13 @@ class Admin extends Controller
             'item' => DB::table($this->module)->find($id)
         ];
         return view('admin/form', $data);
+    }
+
+    public function update($id)
+    {
+        $data = Input::except('_token', '_method');
+        DB::table($this->module)->where('id', $id)->update($data);
+        return back();//->withInput();
     }
 
 }

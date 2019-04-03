@@ -30,6 +30,12 @@ class Login extends \App\Http\Controllers\Controller
         return view('admin/login');
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
     public function login(Request $request)
     {
         $this->validate($request, [
