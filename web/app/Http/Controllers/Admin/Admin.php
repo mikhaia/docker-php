@@ -37,6 +37,19 @@ class Admin extends Controller
         return view('admin/list', $data);
     }
 
+    public function create()
+    {
+        $item = DB::getSchemaBuilder()->getColumnListing($this->module);
+        $item = (object)array_fill_keys($item, '');
+        $data = [
+            'id' => null,
+            'module' => $this->module,
+            'config' => Config::get('admin.'.$this->module),
+            'item' => $item
+        ];
+        return view('admin/form', $data);
+    }
+
     public function edit($id)
     {
         $data = [
@@ -52,7 +65,14 @@ class Admin extends Controller
     {
         $data = Input::except('_token', '_method');
         DB::table($this->module)->where('id', $id)->update($data);
-        return back();//->withInput();
+        return back()->withInput();
+    }
+
+    public function store()
+    {
+        $data = Input::except('_token');
+        DB::table($this->module)->insert($data);
+        return redirect()->route('admin.'.$this->module.'.index');
     }
 
 }
