@@ -10,10 +10,10 @@ return [
     ],
 
     'form' => [
-        'id' => ['type' => 'id'],
         'name' => ['type' => 'text'],
         'group' => ['type' => 'select', 'values' => [1 => 'Admin', 0 => 'User']],
         'email' => ['type' => 'text'],
-        'password' => ['type' => 'password']
+        'password' => ['type' => 'password'],
+        'actions' => ['type' => 'actions', 'btns' => ['save', 'back']]
     ]
 ];

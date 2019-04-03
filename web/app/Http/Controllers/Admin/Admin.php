@@ -36,4 +36,15 @@ class Admin extends Controller
         return view('admin/list', $data);
     }
 
+    public function edit($id)
+    {
+        $data = [
+            'id' => $id,
+            'module' => $this->module,
+            'config' => Config::get('admin.'.$this->module),
+            'item' => DB::table($this->module)->find($id)
+        ];
+        return view('admin/form', $data);
+    }
+
 }
