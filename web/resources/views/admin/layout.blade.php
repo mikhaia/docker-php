@@ -20,7 +20,10 @@
 <link rel="stylesheet" href="{{ asset('admin_assets/assets/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
     <link rel="stylesheet" id="css-main" href="{{ asset('admin_assets/assets/css/oneui.min-4.1.css') }}">
-        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-16158021-6', 'auto');ga('send', 'pageview');</script>
+    <script src="{{ asset('admin_assets/assets/js/oneui.core.min-4.1.js') }}"></script>
+    <script src="{{ asset('admin_assets/assets/js/oneui.app.js') }}"></script>
+    <script src="{{ asset('admin_assets/jquery-ui/jquery-ui.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('admin_assets/jquery-ui/jquery-ui.css') }}">
 </head>
 <body>
 <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed">
@@ -236,8 +239,6 @@
     </div>
 </div>
 </div>
-<script src="{{ asset('admin_assets/assets/js/oneui.core.min-4.1.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/oneui.app.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/plugins/datatables/buttons/dataTables.buttons.min.js') }}"></script>

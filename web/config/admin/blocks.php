@@ -9,7 +9,6 @@ return [
 
     'form' => [
         'name' => ['type' => 'text'],
-        'password' => ['type' => 'password'],
         'actions' => ['type' => 'actions', 'btns' => ['save', 'back']]
     ]
 ];

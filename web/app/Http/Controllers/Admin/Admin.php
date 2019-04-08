@@ -64,6 +64,7 @@ class Admin extends Controller
     public function update($id)
     {
         $data = Input::except('_token', '_method');
+        dd($data);
         DB::table($this->module)->where('id', $id)->update($data);
         return back()->withInput();
     }

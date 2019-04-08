@@ -13,6 +13,7 @@ return [
         'title' => ['type' => 'text'],
         'url' => ['type' => 'text'],
         'public' => ['type' => 'checkbox'],
+        'blocks' => ['type' => 'blocks'],
         'actions' => ['type' => 'actions', 'btns' => ['save', 'back']]
     ]
 ];
