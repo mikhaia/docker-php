@@ -1,0 +1,35 @@
+#BackTop{
+    cursor: pointer;
+    display: none;
+    position: fixed;
+    bottom:50px;
+    right: 50px;
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    z-index: 1300;
+    -webkit-border-radius: 10px;
+    border-radius:10px;
+    border: 3px solid;
+    border-color: #f4f4f4;
+    font-family: tahoma,arial;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50); /* IE 5.5+*/
+    -moz-opacity: 0.5; /* Mozilla 1.6 и ниже */
+    -khtml-opacity: 0.5; /* Konqueror 3.1, Safari 1.1 */
+    opacity: 0.5; /* CSS3 - Mozilla 1.7b +, Firefox 0.9 +, Safari 1.2+, Opera 9+ */
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    border-radius: 10px; /* CSS3 */
+    /* Для плохих IE */
+    behavior: url(border-radius.htc); /* учим IE border-radius */
+}
+#BackTop:hover{
+    opacity: 1;
+}
+#BackTop a{ text-decoration: none;}
+#BackTop .BackTopText{ font-size: 20px; line-height: 50px; width: 100%; display: block;}
+

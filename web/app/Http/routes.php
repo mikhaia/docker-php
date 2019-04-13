@@ -26,7 +26,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+    // return view('welcome');
 });
 
 Route::auth();
