@@ -2,7 +2,7 @@
     <label for="text-input-{{ $name }}">{{ $name }}</label>
     <input type="text"
         name="{{ $name }}" 
-        value="{{ $item->$name}}"
+        value="{{ @$item->$name}}"
         id="text-input-{{ $name }}"
         class="form-control"
         placeholder="{{ $name }}" >

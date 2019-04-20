@@ -64,7 +64,9 @@ class Admin extends Controller
     public function update($id)
     {
         $data = Input::except('_token', '_method');
-        dd($data);
+        foreach($data as $key => $val)
+            if(is_array($val))
+                $data[$key] = json_encode($val);
         DB::table($this->module)->where('id', $id)->update($data);
         return back()->withInput();
     }
@@ -72,6 +74,9 @@ class Admin extends Controller
     public function store()
     {
         $data = Input::except('_token');
+        foreach($data as $key => $val)
+            if(is_array($val))
+                $data[$key] = json_encode($val);
         DB::table($this->module)->insert($data);
         return redirect()->route('admin.'.$this->module.'.index');
     }

@@ -1,3 +1,26 @@
+function setCookie(name,value,days) {
+    var expires = "";
+    if (!days)
+        days = 30;
+    var date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {   
+    document.cookie = name+'=; Max-Age=-99999999;';  
+}
+
 /*!
  * OneUI - v4.1.0
  * @author pixelcave - https://pixelcave.com
@@ -72,6 +95,7 @@
             key: "updateTheme",
             value: function(e, a) {
                 "default" === a ? e.length && e.remove() : e.length ? e.attr("href", a) : jQuery("#css-main").after('<link rel="stylesheet" id="css-theme" href="' + a + '">')
+                setCookie("theme", a)
             }
         }, {
             key: "getWidth",
@@ -706,9 +730,11 @@
                         a._lPage.toggleClass("sidebar-dark")
                     },
                     sidebar_style_dark: function() {
+                        setCookie("sidebar", "sidebar-dark");
                         a._lPage.addClass("sidebar-dark")
                     },
                     sidebar_style_light: function() {
+                        setCookie("sidebar", "sidebar-light");
                         a._lPage.removeClass("sidebar-dark")
                     },
                     side_overlay_toggle: function() {
@@ -744,9 +770,11 @@
                         a._lPage.toggleClass("page-header-dark")
                     },
                     header_style_dark: function() {
+                        setCookie("header", "page-header-dark")
                         a._lPage.addClass("page-header-dark")
                     },
                     header_style_light: function() {
+                        setCookie("header", "page-header-light")
                         a._lPage.removeClass("page-header-dark")
                     },
                     header_search_on: function() {

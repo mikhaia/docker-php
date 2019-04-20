@@ -4,7 +4,7 @@ php:
    environment:
      - ALLOW_OVERRIDE=true
    ports:
-     - "80:80"
+     - "9900:80"
    links:
      - db
    volumes:

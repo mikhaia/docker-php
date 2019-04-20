@@ -5,5 +5,5 @@
         id="textarea-input-{{ $name }}"
         rows="4"
         class="form-control"
-        placeholder="{{ $name }}" >{{ $item->$name}}</textarea>
+        placeholder="{{ $name }}" >{{ @$item->$name}}</textarea>
 </div>

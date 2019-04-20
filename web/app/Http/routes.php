@@ -11,10 +11,13 @@
 |
 */
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
+$admin_prefix = 'admin';
+
+Route::group(['prefix' => $admin_prefix, 'namespace' => 'Admin'], function(){
     Route::get('index', 'Index@index');
     Route::resource('pages', 'Pages');
     Route::resource('users', 'Users');
+    Route::get('blocks/refresh', ['as' => 'admin.blocks.refresh', 'uses' => 'Blocks@refresh']);
     Route::resource('blocks', 'Blocks');
 
     Route::get('login', 'Login@index');
@@ -23,13 +26,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('', 'Login@check');
 });
 
+if(!strpos($_SERVER['REQUEST_URI'], $admin_prefix))
+{
+    Route::get($_SERVER['REQUEST_URI'], ['as' => 'index', 'uses' => 'Index@index']);
+}
 
-
+/*
 Route::get('/', function () {
     return view('index');
     // return view('welcome');
 });
-
+*/
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

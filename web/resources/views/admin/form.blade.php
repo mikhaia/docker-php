@@ -12,7 +12,7 @@
                         {{ method_field('PUT') }}
                     @endif
                     <div class="row push">
-                        <div class="col-lg-8 col-xl-5">
+                        <div class="col-lg-8 col-xl-8">
                             @foreach($config['form'] as $name => $input)
                                 @include('admin.form.'.$input['type'])
                             @endforeach
