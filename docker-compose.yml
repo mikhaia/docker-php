@@ -13,17 +13,16 @@ php:
 
 db:
   container_name: web_db
-  image: mariadb
+  image: mariadb:10.4
   restart: always
   volumes:
     - ./mysql:/var/lib/mysql
   environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_USER: admin
-    MYSQL_PASSWORD: test
-    MYSQL_DATABASE: database
-  ports:
-    - "9902:3306"
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=database
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=test
+  command: 'mysqld --innodb-flush-method=fsync'
 
 phpmyadmin:
   container_name: web_pma
