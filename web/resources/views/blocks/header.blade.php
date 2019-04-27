@@ -3,7 +3,7 @@
         <div class="container">
             <div class="top-header-inner">
                 <div class="top-logo">
-                    <a href="/"><img src="wa-data/public/site/themes/santehniks/img/logo.png" alt="logo"></a>
+                    <a href="/"><img src="{{ asset('wa-data/public/site/themes/santehniks/img/logo.png') }}" alt="logo"></a>
                 </div>
                 <div class="top-contacts">
                     <div class="top-phone">

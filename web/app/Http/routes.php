@@ -19,6 +19,8 @@ Route::group(['prefix' => $admin_prefix, 'namespace' => 'Admin'], function(){
     Route::resource('users', 'Users');
     Route::get('blocks/refresh', ['as' => 'admin.blocks.refresh', 'uses' => 'Blocks@refresh']);
     Route::resource('blocks', 'Blocks');
+    Route::get('products/sync', ['as' => 'admin.products.sync', 'uses' => 'Products@sync']);
+    Route::resource('products', 'Products');
 
     Route::get('login', 'Login@index');
     Route::post('login', 'Login@login');
@@ -28,7 +30,10 @@ Route::group(['prefix' => $admin_prefix, 'namespace' => 'Admin'], function(){
 
 if(!strpos($_SERVER['REQUEST_URI'], $admin_prefix))
 {
+    Route::get('category/{category}/{brand}', ['as' => 'catalog.brand', 'uses' => 'Catalog@brand']);
+    Route::get('category/{category}', ['as' => 'catalog.brand', 'uses' => 'Catalog@category']);
     Route::get($_SERVER['REQUEST_URI'], ['as' => 'index', 'uses' => 'Index@index']);
+    Route::get(strtok($_SERVER['REQUEST_URI'], '?'), ['as' => 'index', 'uses' => 'Index@index']);
 }
 
 /*

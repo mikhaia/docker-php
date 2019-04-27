@@ -8,7 +8,8 @@ class Index extends Controller
 {
     public function url()
     {
-        $url = substr($_SERVER['REQUEST_URI'], 1);
+        $request_uri = strtok($_SERVER['REQUEST_URI'], '?');
+        $url = substr($request_uri, 1);
         if (!$url)
             $url = 'index';
         return $url;
@@ -23,11 +24,8 @@ class Index extends Controller
     {
         $url = $this->url();
         $page = DB::table('pages')->where('url', $url)->first();
-        if (!$page)
-        {
-            abort(404);
-        }
-        else
+        $product = DB::table('products')->where('url', '/'.$url)->first();
+        if($page)
         {
             $block_ids = explode(',', $page->blocks);
             $block_get = DB::table('blocks')->whereIn('id', $block_ids)->get();
@@ -38,7 +36,7 @@ class Index extends Controller
             {
                 $blocks[$block->id] = $block;
                 $block_values = json_decode($block->values, true);
-                foreach($block_values as $id => $val)
+                foreach((array)$block_values as $id => $val)
                 {
                     $values[$block->view][$id] = $block_values[$id];
                     if(isset($page_values[$block->view][$id]) &&
@@ -55,6 +53,14 @@ class Index extends Controller
                 'blocks' => $blocks,
                 'values' => $values
             ]);
+        }
+        elseif($product)
+        {
+            
+        }
+        else
+        {
+            abort(404);
         }
     }
 }

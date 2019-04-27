@@ -2,7 +2,7 @@
     <div class="container">
         <div class="footer-inner">
             <div class="footer-column">
-                <div class="footer-logo"><img src="wa-data/public/site/themes/santehniks/img/logo.png" alt=""></div>
+                <div class="footer-logo"><img src="{{ asset('wa-data/public/site/themes/santehniks/img/logo.png') }}" alt=""></div>
                 <div class="footer-slogan">Сантехникс.ру - интернет магазин сантехники</div>
             </div>
             <div class="footer-column">

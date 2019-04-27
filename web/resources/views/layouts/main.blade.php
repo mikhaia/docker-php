@@ -14,9 +14,9 @@
     </title>
     <meta name="Keywords" content="сантехника, магазин сантехники, сантехника Москва, сантехника для ванной" />
     <meta name="Description" content="Интернет-магазин Сантехникс.ру предлагает сантехнику для ванной по самым низким ценам в Москве. Продукция изготовлена ведущими российскими и зарубежными производителями, что гарантирует ее качество." />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="wa-data/public/site/themes/santehniks/css/main.min.css">
-    <script src="wa-data/public/site/themes/santehniks/js/scripts.min.js"></script>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('wa-data/public/site/themes/santehniks/css/main.min.css') }}">
+    <script src="{{ asset('wa-data/public/site/themes/santehniks/js/scripts.min.js') }}"></script>
     <script type="text/javascript">
     $(window).load(function() {
         $('.promo img').retina({
@@ -57,12 +57,12 @@
         }
     });
     </script>
-    <script src='wa-apps/shop/plugins/backtop/js/BackTop.js'></script>
-    <link rel='stylesheet' href='wa-apps/shop/plugins/backtop/css/BackTop.css'>
+    <script src='{{ asset('wa-apps/shop/plugins/backtop/js/BackTop.js') }}'></script>
+    <link rel='stylesheet' href='{{ asset('wa-apps/shop/plugins/backtop/css/BackTop.css') }}'>
     <meta property="og:title" content="Сантехника - интернет магазин | Купить сантехнику по низким ценам" />
     <meta property="og:description" content="Интернет-магазин Сантехникс.ру предлагает сантехнику для ванной по самым низким ценам в Москве. Продукция изготовлена ведущими российскими и зарубежными производителями, что гарантирует ее качество." />
     <!-- /Yandex.Metrika counter -->
-    <link href="wa-data/public/shop/plugins/belllight/css/belllight.css?v1.4.3-0496913787" rel="stylesheet" />
+    <link href="{{ asset('wa-data/public/shop/plugins/belllight/css/belllight.css?v1.4.3-0496913787') }}" rel="stylesheet" />
     <meta name="yandex-verification" content="51cd9e56de24fcc5" />
 </head>
 

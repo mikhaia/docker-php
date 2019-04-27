@@ -88,17 +88,29 @@
             ['icon' => 'copy', 'text' => 'Pages', 'link' => route('admin.pages.index')],
             ['icon' => 'cubes', 'text' => 'Blocks', 'link' => route('admin.blocks.index')],
             ['icon' => 'users', 'text' => 'Users', 'link' => route('admin.users.index')],
+            '-',
+            ['icon' => 'newspaper', 'text' => 'News', 'link' => 'news'],
+            ['icon' => 'copy', 'text' => 'Articles', 'link' => 'news'],
+            ['icon' => 'store', 'text' => 'Products', 'link' => route('admin.products.index')],
+            '-',
+            ['icon' => 'shopping-basket', 'text' => 'Ordrers', 'link' => 'news'],
+            ['icon' => 'thumbs-up', 'text' => 'Reviews', 'link' => 'news'],
+            ['icon' => 'comment-alt', 'text' => 'Feedback', 'link' => 'news'],
         ];
     ?>
     <div class="content-side content-side-full">
         <ul class="nav-main">
             @foreach($menu_items as $item)
-                <li class="nav-main-item">
-                    <a class="nav-main-link {{ $item['link'] == url()->current() ? 'active' : ''}}" href="{{ $item['link'] }}">
-                        <i class="nav-main-link-icon fa fa-{{ $item['icon'] }}"></i>
-                        <span class="nav-main-link-name">{{ $item['text'] }}</span>
-                    </a>
-                </li>
+                @if($item == '-')
+                    <li><hr></li>
+                @else
+                    <li class="nav-main-item">
+                        <a class="nav-main-link {{ $item['link'] == url()->current() ? 'active' : ''}}" href="{{ $item['link'] }}">
+                            <i class="nav-main-link-icon fa fa-{{ $item['icon'] }}"></i>
+                            <span class="nav-main-link-name">{{ $item['text'] }}</span>
+                        </a>
+                    </li>
+                @endif
             @endforeach
         </ul>
     </div>
