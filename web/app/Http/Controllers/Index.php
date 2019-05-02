@@ -24,7 +24,7 @@ class Index extends Controller
     {
         $url = $this->url();
         $page = DB::table('pages')->where('url', $url)->first();
-        $product = DB::table('products')->where('url', '/'.$url)->first();
+        $product = DB::table('products')->where('url', '/'.$url.'/')->first();
         if($page)
         {
             $block_ids = explode(',', $page->blocks);
@@ -56,7 +56,11 @@ class Index extends Controller
         }
         elseif($product)
         {
-            
+            return view('product', [
+                'product' => $product,
+                'images' => json_decode($product->images),
+                'page' => $product
+            ]);
         }
         else
         {

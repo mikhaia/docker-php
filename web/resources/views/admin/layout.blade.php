@@ -89,8 +89,8 @@
             ['icon' => 'cubes', 'text' => 'Blocks', 'link' => route('admin.blocks.index')],
             ['icon' => 'users', 'text' => 'Users', 'link' => route('admin.users.index')],
             '-',
-            ['icon' => 'newspaper', 'text' => 'News', 'link' => 'news'],
-            ['icon' => 'copy', 'text' => 'Articles', 'link' => 'news'],
+            ['icon' => 'newspaper', 'text' => 'News', 'link' => route('admin.news.index')],
+            ['icon' => 'copy', 'text' => 'Articles', 'link' => route('admin.articles.index')],
             ['icon' => 'store', 'text' => 'Products', 'link' => route('admin.products.index')],
             '-',
             ['icon' => 'shopping-basket', 'text' => 'Ordrers', 'link' => 'news'],
@@ -231,6 +231,7 @@
     </div>
 </div>
 </div>
+<script src="{{ asset('admin_assets/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/plugins/datatables/buttons/dataTables.buttons.min.js') }}"></script>
@@ -239,5 +240,7 @@
 <script src="{{ asset('admin_assets/assets/js/plugins/datatables/buttons/buttons.flash.min.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/plugins/datatables/buttons/buttons.colVis.min.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/pages/be_tables_datatables.min.js') }}"></script>
+<script>jQuery(function(){ One.helpers(['datepicker']); });</script>
+{{-- , 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider' --}}
     </body>
 </html>

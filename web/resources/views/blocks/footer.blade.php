@@ -29,17 +29,10 @@
                 <ul>
                     <li class="title">Контакты</li>
                     <li><a class="phone" href="tel:84952080050">8 (495) 208-00-50</a></li>
-                    <li><a class="email" href="mailto:mail@santehniks.ru">mail@santehniks.ru</a></li>
+                    <li><a class="email" href="mailto:mail@santehnicks.ru">mail@santehnicks.ru</a></li>
                     <li>140055, Московская обл., г. Котельники, Коммерческий пр-д, стр. Е, промзона Технопром, оф. 1</li>
                 </ul>
                 <div align='right'>
-                    <noindex>
-                        <!--LiveInternet counter-->
-                        <script type="text/javascript">
-                        document.write("<a href='//www.liveinternet.ru/click' " + "target=_blank><img src='//counter.yadro.ru/hit?t45.1;r" + escape(document.referrer) + ((typeof(screen) == "undefined") ? "" : ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) + ";h" + escape(document.title.substring(0, 150)) + ";" + Math.random() + "' alt='' title='' " + "border='0' width='3' height='3'><\/a>")
-                        </script>
-                        <!--/LiveInternet-->
-                    </noindex>
                 </div>
             </div>
         </div>

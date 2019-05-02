@@ -17,6 +17,8 @@ Route::group(['prefix' => $admin_prefix, 'namespace' => 'Admin'], function(){
     Route::get('index', 'Index@index');
     Route::resource('pages', 'Pages');
     Route::resource('users', 'Users');
+    Route::resource('news', 'News');
+    Route::resource('articles', 'Articles');
     Route::get('blocks/refresh', ['as' => 'admin.blocks.refresh', 'uses' => 'Blocks@refresh']);
     Route::resource('blocks', 'Blocks');
     Route::get('products/sync', ['as' => 'admin.products.sync', 'uses' => 'Products@sync']);
@@ -30,10 +32,16 @@ Route::group(['prefix' => $admin_prefix, 'namespace' => 'Admin'], function(){
 
 if(!strpos($_SERVER['REQUEST_URI'], $admin_prefix))
 {
-    Route::get('category/{category}/{brand}', ['as' => 'catalog.brand', 'uses' => 'Catalog@brand']);
-    Route::get('category/{category}', ['as' => 'catalog.brand', 'uses' => 'Catalog@category']);
+    Route::get('category/{category}/{brand?}', ['as' => 'catalog.brand', 'uses' => 'Catalog@category']);
+    Route::post('category/{category}/{brand?}', ['as' => 'catalog.brand.list', 'uses' => 'Catalog@catalog_list']);
+    // Route::get('category/{category}', ['as' => 'catalog.brand', 'uses' => 'Catalog@category']);
+    Route::get('articles/{url}', ['as' => 'articles.show', 'uses' => 'Articles@show']);
+    Route::get('news/{url}', ['as' => 'news.show', 'uses' => 'News@show']);
     Route::get($_SERVER['REQUEST_URI'], ['as' => 'index', 'uses' => 'Index@index']);
     Route::get(strtok($_SERVER['REQUEST_URI'], '?'), ['as' => 'index', 'uses' => 'Index@index']);
+    Route::get('search', 'Catalog@search');
+    Route::get('news', ['as' => 'news', 'uses' => 'News@index']);
+    Route::get('articles', ['as' => 'articles', 'uses' => 'Articles@index']);
 }
 
 /*

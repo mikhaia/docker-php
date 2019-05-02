@@ -28,17 +28,28 @@ class Products extends Admin {
         }
         exit('synced');
         */
-        /* Products
-        $file = file_get_contents('catalog.json');
-        $data = json_decode($file, true);
-        foreach($data as $id => $item)
-        {
-            $data[$id]['images'] = json_encode($item['images']);
-            $data[$id]['options'] = json_encode($item['options']);
+        /* Products */
+        foreach (scandir('catalog') as $catalog) {
+            if ($catalog == '.' || $catalog == '..')
+                continue;
+            $file = file_get_contents('catalog/'.$catalog);
+            $data = json_decode($file, true);
+            foreach($data as $id => $item)
+            {
+                if(DB::table($this->module)->find($id))
+                {
+                    unset($data[$id]);
+                }
+                else
+                {
+                    $data[$id]['images'] = json_encode($item['images']);
+                    $data[$id]['options'] = json_encode($item['options']);
+                }
+            }
+            DB::table($this->module)->insert($data);
         }
-        DB::table($this->module)->insert($data);
         exit('synced');
-        */
+        
     }
 
 }
