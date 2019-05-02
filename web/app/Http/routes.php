@@ -39,6 +39,7 @@ if(!strpos($_SERVER['REQUEST_URI'], $admin_prefix))
     Route::get('news/{url}', ['as' => 'news.show', 'uses' => 'News@show']);
     Route::get($_SERVER['REQUEST_URI'], ['as' => 'index', 'uses' => 'Index@index']);
     Route::get(strtok($_SERVER['REQUEST_URI'], '?'), ['as' => 'index', 'uses' => 'Index@index']);
+    Route::post('bellLight', 'Call@send');
     Route::get('search', 'Catalog@search');
     Route::get('news', ['as' => 'news', 'uses' => 'News@index']);
     Route::get('articles', ['as' => 'articles', 'uses' => 'Articles@index']);

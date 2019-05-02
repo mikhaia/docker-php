@@ -11,6 +11,18 @@ class Products extends Admin {
 
     public function sync()
     {
+        /* Brands
+        $file = file_get_contents('brands.json');
+        $data = json_decode($file);
+        foreach($data as $item)
+        {
+            DB::table('products')->where('id', $item->product_id)->update([
+                'brand_name' => $item->brand_name,
+                'brand_slug' => $item->brand_slug
+            ]);
+        }
+        exit('synced');
+         */
         /* Categories
         $file = file_get_contents('category.json');
         $data = json_decode($file, true);
@@ -28,7 +40,7 @@ class Products extends Admin {
         }
         exit('synced');
         */
-        /* Products */
+        /* Products 
         foreach (scandir('catalog') as $catalog) {
             if ($catalog == '.' || $catalog == '..')
                 continue;
@@ -49,6 +61,7 @@ class Products extends Admin {
             DB::table($this->module)->insert($data);
         }
         exit('synced');
+        */
         
     }
 

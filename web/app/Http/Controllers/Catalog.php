@@ -11,7 +11,10 @@ class Catalog extends Controller
     {
         $selected_category = DB::table('categories')->where('url', $_SERVER['REQUEST_URI'].'/')->orderBy('url', 'desc')->first();
         $subcategories = DB::table('categories')->where('parent', $selected_category->id)->get();
-        $products = DB::table('products')->where('category_link', 'LIKE', '/category/'.$category.'/%')->paginate(30);
+        $products = DB::table('products')->where('category_link', 'LIKE', '/category/'.$category.'/%');
+        if ($brand)
+            $products = $products->where('brand_slug', $brand);
+        $products = $products->paginate(30);
         $page = (object)['url' => $_SERVER['REQUEST_URI'], 'title' => $selected_category->title];
 
         return view('catalog', [
@@ -26,7 +29,10 @@ class Catalog extends Controller
     {
         $selected_category = DB::table('categories')->where('url', '/category/'.$category.'/')->first();
         $subcategories = DB::table('categories')->where('parent', $selected_category->id)->get();
-        $products = DB::table('products')->where('category_link', 'LIKE', '/category/'.$category.'/%')->paginate(30);
+        $products = DB::table('products')->where('category_link', 'LIKE', '/category/'.$category.'/%');
+        if ($brand)
+            $products = $products->where('brand_slug', $brand);
+        $products = $products->paginate(30);
 
         return view('catalog_'.$_COOKIE['products_view'], [
             'products' => $products,
@@ -35,10 +41,13 @@ class Catalog extends Controller
         ]);
     }
 
-    public function brand($category, $brand = '')
+    public function brand($brand)
     {
-        dd($brand);
-
+        $products = DB::table('products')->where('brand_slug', $brand)->paginate(30);
+        return view('products', [
+            'products' => $products,
+            'page' => (object)['title' => $products[0]->brand_name, 'url' => true]
+        ]);
     }
 
     public function search()
