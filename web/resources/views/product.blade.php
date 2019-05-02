@@ -22,9 +22,9 @@
                                 </div>
                             </div>
                             <div class="more-images" id="product-gallery">
-                            	@foreach($images as $img)
+                            	@foreach($images as $img_id => $img)
                             		<div class="image" data-image="{{ asset($img->big) }}">
-                            		    <a id="product-image-1032" href="{{ asset($img->big) }}"><img src="{{ asset($img->small) }}" alt="{{ $product->title }}" title="{{ $product->title }}"></a>
+                            		    <a id="product-image-{{ $img_id }}" href="{{ asset($img->big) }}"><img src="{{ asset($img->small) }}" alt="{{ $product->title }}" title="{{ $product->title }}"></a>
                             		</div>
                             	@endforeach
                             </div>
@@ -118,6 +118,7 @@
                     </div>
                 </div>
             </section>
+            {{ Html::script('wa-data/public/site/themes/santehniks/js/product.js') }}
             {{--
             <section class="home-products">
                 <div class="container">

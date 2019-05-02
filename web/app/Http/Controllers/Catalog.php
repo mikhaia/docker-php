@@ -7,9 +7,9 @@ use Input;
 
 class Catalog extends Controller
 {
-    public function category($category, $brand)
+    public function category($category, $brand = '')
     {
-        $selected_category = DB::table('categories')->where('url', '/category/'.$category.'/')->first();
+        $selected_category = DB::table('categories')->where('url', $_SERVER['REQUEST_URI'].'/')->orderBy('url', 'desc')->first();
         $subcategories = DB::table('categories')->where('parent', $selected_category->id)->get();
         $products = DB::table('products')->where('category_link', 'LIKE', '/category/'.$category.'/%')->paginate(30);
         $page = (object)['url' => $_SERVER['REQUEST_URI'], 'title' => $selected_category->title];
@@ -22,7 +22,7 @@ class Catalog extends Controller
         ]);
     }
 
-    public function catalog_list($category, $brand)
+    public function catalog_list($category, $brand = '')
     {
         $selected_category = DB::table('categories')->where('url', '/category/'.$category.'/')->first();
         $subcategories = DB::table('categories')->where('parent', $selected_category->id)->get();
@@ -35,7 +35,7 @@ class Catalog extends Controller
         ]);
     }
 
-    public function brand($category, $brand)
+    public function brand($category, $brand = '')
     {
         dd($brand);
 
