@@ -11,7 +11,7 @@ class Products extends Admin {
 
     public function sync()
     {
-        /* Brands
+        /* Brands*/
         $file = file_get_contents('brands.json');
         $data = json_decode($file);
         foreach($data as $item)
@@ -22,7 +22,7 @@ class Products extends Admin {
             ]);
         }
         exit('synced');
-         */
+         
         /* Categories
         $file = file_get_contents('category.json');
         $data = json_decode($file, true);

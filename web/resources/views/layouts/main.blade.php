@@ -5,13 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>
-        @if($page->url)
-            {{ $page->title }} ― Сантехникс.ру
-        @else
-            Сантехника - интернет магазин | Купить сантехнику по низким ценам
-        @endif
-    </title>
+    <title>{{ $page->title }}{{ ($page->url || $page->url != 'index')?' ― Сантехникс.ру':'' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="Keywords" content="сантехника, магазин сантехники, сантехника Москва, сантехника для ванной" />
     <meta name="Description" content="Интернет-магазин Сантехникс.ру предлагает сантехнику для ванной по самым низким ценам в Москве. Продукция изготовлена ведущими российскими и зарубежными производителями, что гарантирует ее качество." />

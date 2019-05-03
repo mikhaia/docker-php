@@ -43,9 +43,13 @@ class Catalog extends Controller
 
     public function brand($brand)
     {
-        $products = DB::table('products')->where('brand_slug', $brand)->paginate(30);
-        return view('products', [
+        $products = DB::table('products')->where('brand_slug', $brand)->paginate(20);
+        if(!$products)
+            return abort(404);
+        $brand = (object)['name' => $products[0]->brand_name, 'slug' => $products[0]->brand_slug];
+        return view('brand', [
             'products' => $products,
+            'brand' => $brand,
             'page' => (object)['title' => $products[0]->brand_name, 'url' => true]
         ]);
     }
