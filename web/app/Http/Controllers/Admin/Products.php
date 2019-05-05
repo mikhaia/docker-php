@@ -11,7 +11,16 @@ class Products extends Admin {
 
     public function sync()
     {
-        /* Brands*/
+        /* News */
+        // $file = file_get_contents('news.json');
+        // $data = json_decode($file, true);
+        // DB::table('news')->insert($data);
+        /* Articles */
+        // $file = file_get_contents('articles.json');
+        // $data = json_decode($file, true);
+        // DB::table('articles')->insert($data);
+        // exit('synced');
+        /* Brands
         $file = file_get_contents('brands.json');
         $data = json_decode($file);
         foreach($data as $item)
@@ -22,7 +31,7 @@ class Products extends Admin {
             ]);
         }
         exit('synced');
-         
+        */
         /* Categories
         $file = file_get_contents('category.json');
         $data = json_decode($file, true);

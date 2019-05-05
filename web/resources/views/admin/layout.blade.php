@@ -94,8 +94,8 @@
             ['icon' => 'store', 'text' => 'Products', 'link' => route('admin.products.index')],
             '-',
             ['icon' => 'shopping-basket', 'text' => 'Ordrers', 'link' => 'news'],
-            ['icon' => 'thumbs-up', 'text' => 'Reviews', 'link' => 'news'],
-            ['icon' => 'comment-alt', 'text' => 'Feedback', 'link' => 'news'],
+            ['icon' => 'thumbs-up', 'text' => 'Reviews', 'link' => url('admin/pages/10/edit')],
+            ['icon' => 'comment-alt', 'text' => 'Feedback', 'link' => route('admin.feedback.index')],
         ];
     ?>
     <div class="content-side content-side-full">
