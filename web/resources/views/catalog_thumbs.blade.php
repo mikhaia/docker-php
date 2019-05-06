@@ -67,10 +67,16 @@
                                             @endif
                                             <span class="price">{{ number_format($item->price, 0, ' ', ' ') }} руб.</span></div>
                                         <div class="products-buy">
+                                            {{ Form::open(['url' => url('cart/add'), 'class' => 'purchase addtocart']) }}
+                                                {{ Form::submit('В корзину') }}
+                                                {{ Form::hidden('product_id', $item->id) }}
+                                            {{ Form::close() }}
+                                            {{-- 
                                             <form class="purchase addtocart" method="post" action="/cart/add/">
                                                 <input type="submit" value="В корзину">
                                                 <input type="hidden" name="product_id" value="{{ $item->id }}">
                                             </form>
+                                             --}}
                                         </div>
                                         <meta itemprop="price" content="{{ $item->price }}">
                                         <meta itemprop="priceCurrency" content="RUB">
