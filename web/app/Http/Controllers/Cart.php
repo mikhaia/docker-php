@@ -9,9 +9,9 @@ class Cart extends Controller
 {
     public function add()
     {
-        session_start();
         $session_id = session_id();
         $product_id = Input::get('product_id');
+
 
         // Save results
         $cart = DB::table('cart')->where('session_id', $session_id)->where('product_id', $product_id)->first();
@@ -30,14 +30,18 @@ class Cart extends Controller
             $total += $product->price*$item->product_count;
             $count += $item->product_count;
         }
+
         $data = [
-            'item_id': $product->id,
-            'total': $total.' руб.',
-            'discount': 0,
-            'discount_numeric': 0,
-            'discount_coupon': '0 руб.',
-            'count': $count
+            'item_id' => $product_id,
+            'total' => $total.' руб.',
+            'discount' => 0,
+            'discount_numeric' => 0,
+            'discount_coupon' => '0 руб.',
+            'count' => $count
         ];
+
+        $total = number_format($total, 0, ' ', ' ');
+
         return response()->json(['status' => 'ok', 'data' => $data]);
     }
 }

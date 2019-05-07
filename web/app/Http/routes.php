@@ -33,6 +33,7 @@ Route::group(['prefix' => $admin_prefix, 'namespace' => 'Admin'], function(){
 
 if(!strpos($_SERVER['REQUEST_URI'], $admin_prefix))
 {
+    session_start();
     Route::get('category/{category}/{brand?}', 'Catalog@category');
     Route::post('category/{category}/{brand?}', 'Catalog@catalog_list');
     Route::get('brand/{brand}', 'Catalog@brand');

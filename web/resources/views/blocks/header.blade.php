@@ -28,9 +28,24 @@
                     </div>
                 </div>
                 <div class="top-cart">
+                    <?php
+                        $session_id = session_id();
+                        $items = DB::table('cart')->where('session_id', $session_id)->get();
+                        $total = 0;
+                        $count = 0;
+                        foreach($items as $item)
+                        {
+                            $product = DB::table('products')->find($item->product_id);
+                            $total += $product->price*$item->product_count;
+                            $count += $item->product_count;
+                        }
+
+                        $total = number_format($total, 0, ' ', ' ');
+                    ?>
                     <div class="top-cart-inner">
-                        <div class="totals">В корзине <span class="cart-count">0 тов.</span></div>
-                        <div class="summary">на сумму <span class="cart-total">0 руб.</span></div><a href="/cart/" class="to-checkout">оформить заказ</a></div>
+                        <div class="totals">В корзине <span class="cart-count">{{ $count }} тов.</span></div>
+                        <div class="summary">на сумму <span class="cart-total">{{ $total }} руб.</span></div><a href="/cart/" class="to-checkout">оформить заказ</a>
+                    </div>
                 </div>
             </div>
         </div>
