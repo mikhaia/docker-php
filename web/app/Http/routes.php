@@ -42,6 +42,7 @@ if(!strpos($_SERVER['REQUEST_URI'], $admin_prefix))
     Route::post('cart/add', 'Cart@add');
     Route::get($_SERVER['REQUEST_URI'], ['as' => 'index', 'uses' => 'Index@index']);
     Route::get(strtok($_SERVER['REQUEST_URI'], '?'), ['as' => 'index', 'uses' => 'Index@index']);
+    Route::get('cart', 'Cart@index');
     Route::post('bellLight', 'Call@send');
     Route::get('search', 'Catalog@search');
     Route::get('news', ['as' => 'news', 'uses' => 'News@index']);
@@ -57,3 +58,4 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+include 'helpers.php';

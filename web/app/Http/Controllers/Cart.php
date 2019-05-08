@@ -7,6 +7,20 @@ use Input;
 
 class Cart extends Controller
 {
+    public function index()
+    {
+        $session_id = session_id();
+        $items = DB::table('cart')->where('session_id', $session_id)->get();
+        foreach($items as $item)
+        {
+            $item->product = DB::table('products')->find($item->product_id);
+        }
+        return view('cart', [
+            'items' => $items,
+            'page' => (object)['title' => 'Корзина']
+        ]);
+    }
+
     public function add()
     {
         $session_id = session_id();
