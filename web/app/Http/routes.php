@@ -20,6 +20,7 @@ Route::group(['prefix' => $admin_prefix, 'namespace' => 'Admin'], function(){
     Route::resource('news', 'News');
     Route::resource('articles', 'Articles');
     Route::resource('feedback', 'Feedback');
+    Route::resource('sliders', 'Sliders');
     Route::get('blocks/refresh', ['as' => 'admin.blocks.refresh', 'uses' => 'Blocks@refresh']);
     Route::resource('blocks', 'Blocks');
     Route::get('products/sync', ['as' => 'admin.products.sync', 'uses' => 'Products@sync']);

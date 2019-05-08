@@ -92,6 +92,7 @@
             ['icon' => 'newspaper', 'text' => 'News', 'link' => route('admin.news.index')],
             ['icon' => 'copy', 'text' => 'Articles', 'link' => route('admin.articles.index')],
             ['icon' => 'store', 'text' => 'Products', 'link' => route('admin.products.index')],
+            ['icon' => 'images', 'text' => 'Sliders', 'link' => route('admin.sliders.index')],
             '-',
             ['icon' => 'shopping-basket', 'text' => 'Ordrers', 'link' => 'news'],
             ['icon' => 'thumbs-up', 'text' => 'Reviews', 'link' => url('admin/pages/10/edit')],
