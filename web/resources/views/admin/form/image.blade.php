@@ -1,9 +1,17 @@
 <div class="form-group">
-    <label for="text-input-{{ $name }}">{{ $name }}</label>
-    <input type="text"
+{{--     <label for="file-input-{{ $name }}">{{ $name }}</label>
+    <input type="file"
         name="{{ $name }}" 
         value="{{ @$item->$name}}"
-        id="text-input-{{ $name }}"
+        id="file-input-{{ $name }}"
         class="form-control"
-        placeholder="{{ $name }}" >
+        placeholder="{{ $name }}" > --}}
+    <div class="custom-file">
+        <input type="file"
+        	class="custom-file-input"
+        	data-toggle="custom-file-input"
+        	id="file-input-{{ $name }}"
+        	name="{{ $name }}">
+        <label class="custom-file-label" for="file-input-{{ $name }}">Choose file</label>
+    </div>
 </div>

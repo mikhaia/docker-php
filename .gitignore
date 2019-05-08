@@ -1,0 +1,5 @@
+mysql/aria_log*
+mysql/ibdata*
+mysql/ibtmp*
+mysql/ib_buffer_pool
+mysql/ib_logfile*
