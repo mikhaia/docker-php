@@ -7,8 +7,18 @@ use Input;
 
 class Cart extends Controller
 {
+    public $shipping = [
+        1 => 500,
+        2 => 700,
+        3 => 700,
+        4 => 500,
+        5 => 0,
+        6 => 0
+    ];
+
     public function index()
     {
+        $shipping_id = 1;
         $session_id = session_id();
         $items = DB::table('cart')->where('session_id', $session_id)->get();
         foreach($items as $item)
@@ -17,7 +27,26 @@ class Cart extends Controller
         }
         return view('cart', [
             'items' => $items,
-            'page' => (object)['title' => 'Корзина']
+            'page' => (object)['title' => 'Корзина'],
+            'shipping_id' => $shipping_id,
+            'shipping_price' => $this->shipping[$shipping_id]
+        ]);
+    }
+
+    public function checkoutone()
+    {
+        $shipping_id = Input::get('shipping_id');
+        $session_id = session_id();
+        $items = DB::table('cart')->where('session_id', $session_id)->get();
+        foreach($items as $item)
+        {
+            $item->product = DB::table('products')->find($item->product_id);
+        }
+        return view('cart', [
+            'items' => $items,
+            'page' => (object)['title' => 'Корзина'],
+            'shipping_id' => $shipping_id,
+            'shipping_price' => $this->shipping[$shipping_id]
         ]);
     }
 

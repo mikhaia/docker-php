@@ -48,6 +48,7 @@ if(!strpos($_SERVER['REQUEST_URI'], $admin_prefix))
     Route::get('search', 'Catalog@search');
     Route::get('news', ['as' => 'news', 'uses' => 'News@index']);
     Route::get('articles', ['as' => 'articles', 'uses' => 'Articles@index']);
+    Route::post('checkoutone', 'Cart@checkoutone');
 }
 
 /*

@@ -34,9 +34,9 @@
                         ?>
                         @foreach($items as $item)
                         <?php
-                            $total += $item->product->price;
+                            $total += $item->product->price * $item->product_count;
                             if($item->product->old_price)
-                                $discount += $item->product->old_price - $item->product->price;
+                                $discount += ($item->product->old_price - $item->product->price) * $item->product_count;
                         ?>
                         <div class="cartOS__cartItem" data-id="{{ $item->product->id }}">
                             <div class="cartOS__cartW cartOS__cartW2">
@@ -48,12 +48,12 @@
                                 <div class="cartOS__count">
                                     <div class="cartOS__countMinus">–</div>
                                     <div class="cartOS__countCount">
-                                        <input type="text" name="quantity[{{ $item->product->id }}]" value="1" />
+                                        <input type="text" name="quantity[{{ $item->product->id }}]" value="{{ $item->product_count }}" />
                                     </div>
                                     <div class="cartOS__countPlus">+</div>
                                 </div>
                             </div>
-                            <div class="cartOS__cartW cartOS__cartW6"><span class="cartOS__cartPrice cartOS__cartPrice_all">3 500 руб.</span></div>
+                            <div class="cartOS__cartW cartOS__cartW6"><span class="cartOS__cartPrice cartOS__cartPrice_all">{{ intToPrice($item->product->price*$item->product_count) }} руб.</span></div>
                             <div class="cartOS__cartW cartOS__cartW1"><span class="cartOS__cartDelete"></span></div>
                         </div>
                         @endforeach
@@ -338,6 +338,9 @@
                                             });
                                             $(".checkout-options.shipping input:radio").change(function(e, not_check) {
                                                 if($(this).is(':checked') && !$(this).data('ignore')) {
+                                                    $('.checkout-options li').removeClass('shipping_active');
+                                                    $(this).closest('li').addClass('shipping_active');
+
                                                     $(".checkout-options.shipping .wa-form").hide();
                                                     $(this).closest('li').find('.wa-form').show();
                                                     if($(this).data('changed')) {
@@ -421,6 +424,9 @@
                                         (function($) {
                                             $(".checkout-options.payment input:radio").change(function() {
                                                 if($(this).is(':checked')) {
+                                                    $('.checkout-options.payment li').removeClass('payment_active');
+                                                    $(this).closest('li').addClass('payment_active');
+
                                                     $(".checkout-options.payment .wa-form").hide();
                                                     $(this).closest('li').find('.wa-form').show();
                                                 }
@@ -461,7 +467,7 @@
                                     <div>Товары:</div>
                                 </div>
                                 <div class="cartOS__bl">
-                                    <div class="cartOS__price">0 руб.</div>
+                                    <div class="cartOS__price">{{ intToPrice($shipping_price) }} руб.</div>
                                     <div>Доставка:</div>
                                 </div>
                                 <div class="cartOS__bl">
@@ -469,7 +475,7 @@
                                     <div>Скидка:</div>
                                 </div>
                                 <div class="cartOS__bl">
-                                    <div class="cartOS__price cartOS__price_bold">{{ intToPrice($total) }} руб.</div>
+                                    <div class="cartOS__price cartOS__price_bold">{{ intToPrice($shipping_price+$total) }} руб.</div>
                                     <div>Итого:</div>
                                 </div>
                                 <button class="cartOS__button">Оформить заказ</button>
@@ -479,14 +485,14 @@
                 </div>
                 @endif
                 {{ Html::script('wa-data/public/shop/plugins/cartonestep/js/cartonestepFrontend.js') }}
-                {{-- <script src="/wa-data/public/shop/plugins/cartonestep/js/cartonestepFrontend.js?4.1.5-5011225606"></script>
+                {{-- <script src="/wa-data/public/shop/plugins/cartonestep/js/cartonestepFrontend.js?4.1.5-5011225606"></script>--}}
                 <script>
                 function checkjQuery() {
                     if(typeof jQuery != 'undefined') {
                         $(function() {
                             $.checkoutone.init({
                                 'url': '/',
-                                'urlRoute': 'checkoutone/',
+                                'urlRoute': 'checkoutone',
                                 'yandex': '{"counter":"","click":"","order":"","fail":""}',
                                 'beforeunload': '0',
                                 'mask': '',
@@ -504,7 +510,6 @@
                 };
                 checkjQuery();
                 </script>
-                 --}}
             </div>
         </div>
     </div>
