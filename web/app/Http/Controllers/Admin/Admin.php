@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class Admin extends Controller
 {
     public $module = 'pages';
+    public $upload_folder;
     /**
      * Create a new controller instance.
      *
@@ -19,6 +20,7 @@ class Admin extends Controller
      */
     public function __construct()
     {
+        $this->upload_folder = 'uploads/data/'.$this->module;
         $this->middleware('auth');
     }
 
@@ -63,22 +65,36 @@ class Admin extends Controller
 
     public function update($id)
     {
-        $data = Input::except('_token', '_method');
-        foreach($data as $key => $val)
-            if(is_array($val))
-                $data[$key] = json_encode($val);
+        $data = $this->data();
         DB::table($this->module)->where('id', $id)->update($data);
         return back()->withInput();
     }
 
     public function store()
     {
-        $data = Input::except('_token');
-        foreach($data as $key => $val)
-            if(is_array($val))
-                $data[$key] = json_encode($val);
+        $data = $this->data();
         DB::table($this->module)->insert($data);
         return redirect()->route('admin.'.$this->module.'.index');
+    }
+
+    public function data()
+    {
+        $data = Input::except('_token', '_method');
+        foreach($data as $key => $val)
+        {
+            if($file = Input::file($key))
+            {
+                $file_name = time().'.'.strtolower($file->getClientOriginalExtension());
+                $file->move($this->upload_folder, $file_name);
+                $data[$key] = $this->upload_folder.'/'.$file_name;
+            }
+            if(is_array($val))
+            {
+                $data[$key] = json_encode($val);
+            }
+        }
+
+        return $data;
     }
 
 }
