@@ -14,7 +14,9 @@
         </div>
         <div class="inner" role="main">
             <div class="cartOS cartOS_right">
-                <link rel="stylesheet" href="/wa-data/public/shop/plugins/cartonestep/css/cartonestepFrontend.css?4.1.5-5011225606" />
+                {{-- <link rel="stylesheet" href="/wa-data/public/shop/plugins/cartonestep/css/cartonestepFrontend.css?4.1.5-5011225606" /> --}}
+                {{ Html::style('wa-data/public/shop/plugins/cartonestep/css/cartonestepFrontend.css') }}
+                @if($items)
                 <div class="cartOS__cart">
                     <h1>Корзина</h1>
                     {{ Form::open() }}
@@ -72,11 +74,13 @@
                         <!-- plugin hook: 'frontend_cart' -->
                     </div>
                 </div>
-                @if(!$items)
+                @else
                     <p class="error cartOS__errorMin">Вы не можете оформить заказ, т.к. минимальная сумма вашего заказа 0 рублей</p>
                 @endif
+                @if($items)
                 <div class="cartOS__checkout" data-min="0">
                     <h1>Оформление заказа</h1>
+                    {{-- Deliver --}}
                     <div class="cartOS__left">
                         <div class="checkout-step step-contactinfo" data-step-index="1">
                             <form class="checkout-form" method="post" action="">
@@ -447,24 +451,25 @@
                             </form>
                         </div>
                     </div>
+                    {{-- Summary --}}
                     <div class="cartOS__right">
                         <div class="cartOS__info">
                             <h2 class="cartOS__title"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1472 930v318q0 119-84.5 203.5t-203.5 84.5h-832q-119 0-203.5-84.5t-84.5-203.5v-832q0-119 84.5-203.5t203.5-84.5h832q63 0 117 25 15 7 18 23 3 17-9 29l-49 49q-10 10-23 10-3 0-9-2-23-6-45-6h-832q-66 0-113 47t-47 113v832q0 66 47 113t113 47h832q66 0 113-47t47-113v-254q0-13 9-22l64-64q10-10 23-10 6 0 12 3 20 8 20 29zm231-489l-814 814q-24 24-57 24t-57-24l-430-430q-24-24-24-57t24-57l110-110q24-24 57-24t57 24l263 263 647-647q24-24 57-24t57 24l110 110q24 24 24 57t-24 57z"/></svg> Ваш заказ:</h2>
                             <div class="cartOS__infoBl">
                                 <div class="cartOS__bl">
-                                    <div class="cartOS__price">3 500 руб.</div>
+                                    <div class="cartOS__price">{{ intToPrice($total) }} руб.</div>
                                     <div>Товары:</div>
                                 </div>
                                 <div class="cartOS__bl">
-                                    <div class="cartOS__price">500 руб.</div>
+                                    <div class="cartOS__price">0 руб.</div>
                                     <div>Доставка:</div>
                                 </div>
                                 <div class="cartOS__bl">
-                                    <div class="cartOS__price">&minus; 0 руб.</div>
+                                    <div class="cartOS__price">&minus; {{ intToPrice($discount) }} руб.</div>
                                     <div>Скидка:</div>
                                 </div>
                                 <div class="cartOS__bl">
-                                    <div class="cartOS__price cartOS__price_bold">4 000 руб.</div>
+                                    <div class="cartOS__price cartOS__price_bold">{{ intToPrice($total) }} руб.</div>
                                     <div>Итого:</div>
                                 </div>
                                 <button class="cartOS__button">Оформить заказ</button>
@@ -472,7 +477,9 @@
                         </div>
                     </div>
                 </div>
-                <script src="/wa-data/public/shop/plugins/cartonestep/js/cartonestepFrontend.js?4.1.5-5011225606"></script>
+                @endif
+                {{ Html::script('wa-data/public/shop/plugins/cartonestep/js/cartonestepFrontend.js') }}
+                {{-- <script src="/wa-data/public/shop/plugins/cartonestep/js/cartonestepFrontend.js?4.1.5-5011225606"></script>
                 <script>
                 function checkjQuery() {
                     if(typeof jQuery != 'undefined') {
@@ -497,6 +504,7 @@
                 };
                 checkjQuery();
                 </script>
+                 --}}
             </div>
         </div>
     </div>
