@@ -83,7 +83,7 @@
                     {{-- Deliver --}}
                     <div class="cartOS__left">
                         <div class="checkout-step step-contactinfo" data-step-index="1">
-                            <form class="checkout-form" method="post" action="">
+                            {{ Form::open(['class' => 'checkout-form']) }}
                                 <h2 class="cartOS__title">1.<svg viewBox="0 0 1792 1792" xmlns="https://www.w3.org/2000/svg"><path d="M1536 1399q0 109-62.5 187t-150.5 78h-854q-88 0-150.5-78t-62.5-187q0-85 8.5-160.5t31.5-152 58.5-131 94-89 134.5-34.5q131 128 313 128t313-128q76 0 134.5 34.5t94 89 58.5 131 31.5 152 8.5 160.5zm-256-887q0 159-112.5 271.5t-271.5 112.5-271.5-112.5-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5z"/></svg> Контактная информация</h2>
                                 <div class="cartOS__list cartOS__list_contactinfo">
                                     <div class="cartOS__form">
@@ -127,11 +127,10 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="step" value="contactinfo">
-                                <input type="hidden" name="_csrf" value="" />
-                            </form>
+                            {{ Form::close() }}
                         </div>
                         <div class="checkout-step step-shipping" data-step-index="2">
-                            <form class="checkout-form" method="post" action="">
+                            {{ Form::open(['class' => 'checkout-form']) }}
                                 <h2 class="cartOS__title">2.<svg viewBox="0 0 1792 1792" xmlns="https://www.w3.org/2000/svg"><path d="M640 1408q0-52-38-90t-90-38-90 38-38 90 38 90 90 38 90-38 38-90zm-384-512h384v-256h-158q-13 0-22 9l-195 195q-9 9-9 22v30zm1280 512q0-52-38-90t-90-38-90 38-38 90 38 90 90 38 90-38 38-90zm256-1088v1024q0 15-4 26.5t-13.5 18.5-16.5 11.5-23.5 6-22.5 2-25.5 0-22.5-.5q0 106-75 181t-181 75-181-75-75-181h-384q0 106-75 181t-181 75-181-75-75-181h-64q-3 0-22.5.5t-25.5 0-22.5-2-23.5-6-16.5-11.5-13.5-18.5-4-26.5q0-26 19-45t45-19v-320q0-8-.5-35t0-38 2.5-34.5 6.5-37 14-30.5 22.5-30l198-198q19-19 50.5-32t58.5-13h160v-192q0-26 19-45t45-19h1024q26 0 45 19t19 45z"/></svg> Доставка</h2>
                                 <div class="cartOS__list cartOS__list_shipping">
                                     <div class="checkout-content" data-step-id="shipping">
@@ -402,11 +401,10 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="step" value="shipping">
-                                <input type="hidden" name="_csrf" value="" />
-                            </form>
+                            {{ Form::close() }}
                         </div>
                         <div class="checkout-step step-payment" data-step-index="3">
-                            <form class="checkout-form" method="post" action="">
+                            {{ Form::open(['class' => 'checkout-form']) }}
                                 <h2 class="cartOS__title">3.<svg viewBox="0 0 2304 1792" xmlns="https://www.w3.org/2000/svg"><path d="M0 1504v-608h2304v608q0 66-47 113t-113 47h-1984q-66 0-113-47t-47-113zm640-224v128h384v-128h-384zm-384 0v128h256v-128h-256zm1888-1152q66 0 113 47t47 113v224h-2304v-224q0-66 47-113t113-47h1984z"/></svg> Оплата</h2>
                                 <div class="cartOS__list cartOS__list_payment">
                                     <div class="checkout-content" data-step-id="payment">
@@ -415,10 +413,12 @@
                                                 <h3><label><img src="/wa-plugins/payment/cash/img/cash.png" class="method-logo"><input  type="radio" name="payment_id" value="7" checked>Наличный расчёт</label></h3>
                                                 <p>Оплата наличными курьеру или в офисе</p>
                                             </li>
+                                            {{--
                                             <li class="">
                                                 <h3><label><img src="/wa-data/public/site/themes/santehniks/img/Visa-Yandex-Money.jpg" class="method-logo"><input  type="radio" name="payment_id" value="8" >Яндекс.Деньги или карта</label></h3>
                                                 <p>Оплата через платежную систему Яндекс.Деньги. Также к оплате принимаются банковские карты. Доступно только при онлайн-оплате, сразу после оформления заказа</p>
                                             </li>
+                                            --}}
                                         </ul>
                                         <script type="text/javascript">
                                         (function($) {
@@ -438,11 +438,10 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="step" value="payment">
-                                <input type="hidden" name="_csrf" value="" />
-                            </form>
+                            {{ Form::close() }}
                         </div>
                         <div class="checkout-step step-confirmation" data-step-index="4">
-                            <form class="checkout-form" method="post" action="">
+                            {{ Form::open(['class' => 'checkout-form']) }}
                                 <h2 class="cartOS__title">4.<svg viewBox="0 0 1792 1792" xmlns="https://www.w3.org/2000/svg"><path d="M1792 896q0 174-120 321.5t-326 233-450 85.5q-70 0-145-8-198 175-460 242-49 14-114 22-17 2-30.5-9t-17.5-29v-1q-3-4-.5-12t2-10 4.5-9.5l6-9 7-8.5 8-9q7-8 31-34.5t34.5-38 31-39.5 32.5-51 27-59 26-76q-157-89-247.5-220t-90.5-281q0-130 71-248.5t191-204.5 286-136.5 348-50.5q244 0 450 85.5t326 233 120 321.5z"/></svg> Комментарий к заказу</h2>
                                 <div class="cartOS__list cartOS__list_confirmation">
                                     <div class="cartOS__confirmation">
@@ -453,8 +452,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="step" value="confirmation">
-                                <input type="hidden" name="_csrf" value="" />
-                            </form>
+                            {{ Form::close() }}
                         </div>
                     </div>
                     {{-- Summary --}}

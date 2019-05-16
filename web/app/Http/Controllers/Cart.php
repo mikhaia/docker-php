@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Mail;
 use Input;
 
 class Cart extends Controller
@@ -36,6 +37,8 @@ class Cart extends Controller
     public function checkoutone()
     {
         $shipping_id = Input::get('shipping_id');
+        if(!$shipping_id)
+            $shipping_id = 1;
         $session_id = session_id();
         $items = DB::table('cart')->where('session_id', $session_id)->get();
         foreach($items as $item)
@@ -48,6 +51,40 @@ class Cart extends Controller
             'shipping_id' => $shipping_id,
             'shipping_price' => $this->shipping[$shipping_id]
         ]);
+    }
+
+    public function order()
+    {
+        $customer = Input::get('customer');
+        $data['name'] = $customer['firstname'];
+        $data['phone'] = $customer['phone'];
+        $data['email'] = $customer['email'];
+        $data['products'] = json_encode(Input::get('quantity'));
+        $data['delivery_type'] = $delivery_type = Input::get('shipping_id');
+        $delivery = Input::get('customer_'.$delivery_type);
+        $data['delivery_city'] = $delivery['address.shipping']['city'];
+        $data['delivery_address'] = $delivery['address.shipping']['street'];
+        $data['comment'] = Input::get('comment');
+        $data['session_id'] = session_id();
+
+        DB::table('orders')->insert($data);
+        session_destroy();
+        session_start();
+
+        Mail::send('emails.orders', $data, function ($message) {
+            $message->to('exwolfram@gmail.com')->cc('chronokz@yandex.kz')->subject('Новый заказ!');
+        });
+
+        Mail::send('emails.orders', $data, function ($message) use ($data) {
+            $message->to($data['email'], $data['name'])->subject('Ваш заказ');
+        });
+
+        return response()->json(['status' => 'ok', 'data' => ['status' => true]]);
+    }
+
+    public function success()
+    {
+        return view('success');
     }
 
     public function add()

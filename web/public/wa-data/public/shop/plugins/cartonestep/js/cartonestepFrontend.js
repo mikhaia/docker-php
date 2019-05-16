@@ -269,7 +269,7 @@
                     comment += $('.cartOS__comment').val();
                 }
 
-                $.post(that.url+ that.urlRoute + "order/", serializeForm+'cartos__order=1&comment='+comment, function (response) {
+                $.post(that.url+ that.urlRoute + "order", serializeForm+'cartos__order=1&comment='+comment, function (response) {
                     var content = $(response);
                     if(response.status == 'ok' && response.data) {
                         if(response.data.status == false) {
@@ -291,7 +291,7 @@
                             $(window).unbind('beforeunload');
 
                             setTimeout(function() {
-                                location.href = that.url + 'checkout/success/';
+                                location.href = that.url + 'checkout/success';
                             }, 300);
                         }
                     } else {

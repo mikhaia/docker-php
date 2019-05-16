@@ -94,7 +94,7 @@
             ['icon' => 'store', 'text' => 'Products', 'link' => route('admin.products.index')],
             ['icon' => 'images', 'text' => 'Sliders', 'link' => route('admin.sliders.index')],
             '-',
-            ['icon' => 'shopping-basket', 'text' => 'Ordrers', 'link' => 'news'],
+            ['icon' => 'shopping-basket', 'text' => 'Ordrers', 'link' => route('admin.orders.index')],
             ['icon' => 'thumbs-up', 'text' => 'Reviews', 'link' => url('admin/pages/10/edit')],
             ['icon' => 'comment-alt', 'text' => 'Feedback', 'link' => route('admin.feedback.index')],
         ];

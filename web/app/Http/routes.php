@@ -18,6 +18,7 @@ Route::group(['prefix' => $admin_prefix, 'namespace' => 'Admin'], function(){
     Route::resource('pages', 'Pages');
     Route::resource('users', 'Users');
     Route::resource('news', 'News');
+    Route::resource('orders', 'Orders');
     Route::resource('articles', 'Articles');
     Route::resource('feedback', 'Feedback');
     Route::resource('sliders', 'Sliders');
@@ -49,6 +50,9 @@ if(!strpos($_SERVER['REQUEST_URI'], $admin_prefix))
     Route::get('news', ['as' => 'news', 'uses' => 'News@index']);
     Route::get('articles', ['as' => 'articles', 'uses' => 'Articles@index']);
     Route::post('checkoutone', 'Cart@checkoutone');
+    Route::post('checkoutoneorder', 'Cart@order');
+    Route::post('data/shipping', 'Cart@shipping');
+    Route::get('checkout/success', 'Cart@success');
 }
 
 /*
