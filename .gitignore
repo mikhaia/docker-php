@@ -1,6 +1,0 @@
-/mysql/aria_log*
-/mysql/ibdata*
-/mysql/ibtmp*
-/mysql/iblogfile*
-/mysql/ib_buffer_pool
-/mysql/ib_logfile*

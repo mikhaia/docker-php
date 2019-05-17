@@ -62,7 +62,7 @@ class Login extends \App\Http\Controllers\Controller
 
     public function check()
     {
-        if(Auth::user()->group == 1)
+        if(Auth::user() && Auth::user()->group == 1)
             return redirect('admin/pages');
         else
             return redirect('/');

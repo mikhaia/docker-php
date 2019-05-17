@@ -19,13 +19,14 @@
     </div>
     <div class="col-md">
       <ul class="sortable sortable-page">
-        @foreach($blocks as $block)
-          @if(in_array($block->id, $block_in_page))
-            <li class="ui-state-default" value="{{ $block->id }}">
-              {{ $block->name }}
-              <a class="edit-link" data-id="{{ $block->id }}" data-name="{{ $block->view }}"><i class="fa fa-wrench"></i></a>
-            </li>
-          @endif
+        @foreach($block_in_page as $block_id)
+          <?php
+            $block = DB::table('blocks')->find($block_id);
+          ?>
+          <li class="ui-state-default" value="{{ $block->id }}">
+            {{ $block->name }}
+            <a class="edit-link" data-id="{{ $block->id }}" data-name="{{ $block->view }}"><i class="fa fa-wrench"></i></a>
+          </li>
         @endforeach
       </ul>
     </div>
