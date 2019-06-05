@@ -4,7 +4,7 @@ php:
    environment:
      - ALLOW_OVERRIDE=true
    ports:
-     - "80:80"
+     - "9902:80"
    links:
      - db
    volumes:
@@ -13,17 +13,17 @@ php:
 
 db:
   container_name: web_db
-  image: mariadb
+  image: mariadb:10.4
   restart: always
   volumes:
     - ./mysql:/var/lib/mysql
+    - ./config/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
   environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_USER: admin
-    MYSQL_PASSWORD: test
-    MYSQL_DATABASE: database
-  ports:
-    - "9902:3306"
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=database
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=test
+  command: 'mysqld --innodb-flush-method=fsync'
 
 phpmyadmin:
   container_name: web_pma
